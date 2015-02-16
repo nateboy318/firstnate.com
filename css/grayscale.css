@@ -3,6 +3,48 @@
  * Code licensed under the Apache License v2.0.
  * For details, see http://www.apache.org/licenses/LICENSE-2.0.
  */
+ #header ul {
+	list-style: none;
+	padding:0;
+	margin:0;
+}
+#header li {
+	display: inline;
+	border: solid;
+	border-width: 1px 1px 0 1px;
+	margin: 0 0.5em 0 0;
+}
+#header li a {
+	padding: 0 1em;
+}
+#content {
+	border: 1px solid;
+}
+#header #selected {
+	padding-bottom: 1px; 
+	background: white;
+}
+#header li {
+	float: left;
+	border: 1px solid;
+	border-bottom-width: 0;
+	margin: 0 0.5em 0 0;
+}
+#content {
+	border: 1px solid;
+	clear: both;
+}
+
+h1 {
+	margin: 0;
+	padding: 0 0 1em 0;
+} 
+#header #selected {
+	position: relative;
+	top: 1px;
+	background: white;
+}
+
 
 
 body {
