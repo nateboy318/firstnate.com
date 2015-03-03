@@ -1,54 +1,31 @@
 <!DOCTYPE html>
-<title>Alert formatting</title>
-<meta charset=utf-8>
-<button id=test>Click</button>
-<script language="JavaScript1.2">
-<!--
 
+ 
+<script type="text/javascript">
 
-function get_password() {
-  orig_pass = prompt("Please enter password","");
-  if (orig_pass!=null && orig_pass!="")
-  password = new Array(orig_pass.length);
-  for(i=0; i<orig_pass.length; i++) {
-    password[i] = orig_pass.charCodeAt(i);
-  }
-  return password;
-}
+today = new Date();
 
-password = get_password();
-orig = unescape("");
-orig = orig.split("");
+BigDay = new Date("December 25, 2020");
 
-passnum = orig.length % password.length;
-for(i=orig.length-1; i>=0; i--) {
+msPerDay = 24 * 60 * 60 * 1000 ;
 
-  passnum--;
-  if (passnum == -1) passnum = password.length - 1;
-  
-  pos1 = i;
-  pos2 = i + password[passnum];
+timeLeft = (BigDay.getTime() - today.getTime());
 
-  if (pos2 >= orig.length) continue;
+e_daysLeft = timeLeft / msPerDay;
 
-  char1 = orig[pos1];
-  char2 = orig[pos2];
+daysLeft = Math.floor(e_daysLeft);
 
-  orig[pos2] = char1;
-  orig[pos1] = char2;
+e_hrsLeft = (e_daysLeft - daysLeft)*24;
 
-}
+hrsLeft = Math.floor(e_hrsLeft);
 
-orig1 = "";
-for(i=0;i<orig.length;i++) {
-  orig1 = orig1 + orig[i];
-}
-orig1 = orig1.replace(/mmm/g,"\r\n");
+minsLeft = Math.floor((e_hrsLeft - hrsLeft)*60);
 
-document.write(orig1);
-//-->
-alert("correct");
+document.write("There are only<BR> <H4>" + daysLeft + " days " + hrsLeft +" hours and " + minsLeft + " minutes left </H4> Until December 25th 2020<P>");
+
 </script>
+
+
 <noscript>JavaScript must be enabled in your browse in order to see protected page.</noscript>
 
 <CENTER>
