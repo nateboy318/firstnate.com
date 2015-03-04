@@ -86,6 +86,33 @@ window.onload=onloadfunction
 if (persistmenu==”yes” && document.getElementById)
 window.onunload=savemenustate
 </script>
+<!– Keep all menus within masterdiv–>
+<div id=”masterdiv”>
+<div onclick=”SwitchMenu(‘sub1′)”>Topics</div>
+<span id=”sub1″>
+– <a href=”http://www.makeuseof.com/service/browser”>Browsers/Addons</a><br>
+– <a href=”http://www.makeuseof.com/service/web_based”>Web Apps</a><br>
+– <a href=”http://www.makeuseof.com/service/how-to”>How-To Tips</a><br>
+– <a href=”http://www.makeuseof.com/service/applications”>Cool Software</a><br>
+…and more!
+</span>
+<div onclick=”SwitchMenu(‘sub2′)”>Staff Writers</div>
+<span id=”sub2″>
+– <a href=”http://www.makeuseof.com/tag/author/karl-l-gechlik/”>Karl Gechlik</a><br>
+– <a href=”http://www.makeuseof.com/tag/author/tinsie/”>Tina</a><br>
+– <a href=”http://www.makeuseof.com/tag/author/varunkashyap/”>Varun Kashyap</a><br>
+…and more!
+</span>
+<div onclick=”SwitchMenu(‘sub3′)”>Miscellaneous</div>
+<span id=”sub3″>
+– <a href=”http://www.makeuseof.com/about/”>About</a><br>
+– <a href=”http://www.makeuseof.com/contact”>Contact</a><br>
+– <a href=”http://www.makeuseof.com/archives-2″>Archives</a><br>
+– <a href=”http://www.makeuseof.com/disclaimer”>Disclaimer</a><br>
+</span>
+</div>
+Output:
+
 <head> <script language="javascript" type="text/javascript">alert("Welcome to _surf_ all day")</script></head><font face="TimesNewRoman"><span style="font-size: 10pt; text-decoration: none"></span></a></font>
 <p align="right">
 
