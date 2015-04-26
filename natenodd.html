@@ -8,7 +8,7 @@
   <input type="radio" name="rating" value="5"><i></i>
 </span>
 <strong class="choice">Choose a rating</strong>
-
+<style>
 .star-rating{
   font-size:0;
   white-space:nowrap;
@@ -96,7 +96,7 @@ body{
     display:inline-block;
   }
 }
-
+</style>
 <script>$(':radio').change(
   function(){
     $('.choice').text( this.value + ' stars' );
