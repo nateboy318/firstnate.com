@@ -3,5 +3,7 @@ IMG {
   margin: auto;
   display: block;
   margin-left: auto;
-  margin-right: auto }
+  margin-right: auto;
+  width: 300em;
+  height: 300em;
 }
