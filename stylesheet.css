@@ -18,3 +18,16 @@ div div img {
   opacity: 0.5;
   filter: alpha(opacity=50);
 }
+
+.imageBack
+{
+    position: relative;
+    top: 0;
+    left: 0;
+}
+.imageTop
+{
+    position: absolute;
+    top: 60px;
+    left: 80px;
+}
