@@ -1,13 +1,13 @@
 IMG {
-  border: 2px solid black;
-  margin: auto;
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 30em;
-  height: 30em;
+  width: 60em;
+  height: 50em;
+  opacity: 0.4;
+  filter: alpha(opacity=40);
 }
  
 P {
-  background-color: 3px black ;
+  background-color: black ;
 }
