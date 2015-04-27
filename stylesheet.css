@@ -1,4 +1,7 @@
-img {
+IMG.DISPLAY {
   border: 2px solid black;
   margin: auto;
+  display: block;
+  margin-left: auto;
+  margin-right: auto }
 }
