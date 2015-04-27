@@ -11,3 +11,10 @@ IMG {
 P {
   background-color: black;
 }
+
+div div img {
+  width: 30em;
+  height: 43em;
+  opacity: 0.5;
+  filter: alpha(opacity=50);
+}
