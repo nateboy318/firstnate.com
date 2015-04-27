@@ -2,7 +2,7 @@ IMG {
   width: 30em;
   height: 43em;
   opacity: 0.3;
-  filter: alpha(opacity=100);
+  
 }
  
 P {
@@ -13,6 +13,6 @@ body background {
   width:  84em;
   height: 43em;
   opacity: 0.5;
-  filter: alpha(opacity=100);
+  
 }
 
