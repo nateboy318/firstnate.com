@@ -48,7 +48,37 @@
                 <div style="background-image: url(img/image5.jpg)"></div>
             </div>    
         </div>
+ <script>
+
+ $(document).ready(function(){
+
+            $("#theTarget").skippr();
+
+        });    
+        
+        </script>           
             
+<style>
+  
+ 
+        // Defaults   
+        $("#theTarget").skippr({
+
+            transition: 'slide',
+            speed: 1000,
+            easing: 'easeOutQuart',
+            navType: 'block',
+            childrenElementType: 'div',
+            arrows: true,
+            autoPlay: false,
+            autoPlayDuration: 5000,
+            keyboardOnAlways: true,
+            hidePrevious: false
+
+        });
+ 
+  
+</style>
             
 
 
