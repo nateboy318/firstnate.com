@@ -1,4 +1,4 @@
-<!-- End of Fireworks -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,18 +31,49 @@
   
 </div>
 
-</body>
-</html>
+<div id="owl-demo" class="owl-carousel owl-theme">
+  <div class="item"><img src="assets/fullimage1.jpg" alt="The Last of us"></div>
+  <div class="item"><img src="assets/fullimage2.jpg" alt="GTA V"></div>
+  <div class="item"><img src="assets/fullimage3.jpg" alt="Mirror Edge"></div>
+</div>
+
+<SCRIPT>$(document).ready(function() {
 
 
+  $("#owl-demo").owlCarousel({
+      navigation : true, // Show next and prev buttons
+      slideSpeed : 300,
+      paginationSpeed : 400,
+     singleItem:true
+ 
+     // "singleItem:true" is a shortcut for:
+      // items : 1, 
+      // itemsDesktop : false,
+      // itemsDesktopSmall : false,
+      // itemsTablet: false,
+     // itemsMobile : false
+  });
+});
+</SCRIPT>
 
+<style>
+#owl-demo .item img{
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+</style>
+
+
+<!DOCTYPE html>
 <head>
 
    <meta charset="utf-8">   <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1">
    <meta name="description" content="">
    <meta name="author" content="">
-<!DOCTYPE html>
+
 <html lang="en">
 
 
