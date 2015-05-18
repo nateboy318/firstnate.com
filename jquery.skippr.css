@@ -1,0 +1,121 @@
+<style>
+.skippr { 
+2 	width:100%; 
+3 	height:100%; 
+4 	position: relative; 
+5 	overflow:hidden; 
+6 } 
+7 
+ 
+8 .skippr > div { 
+9 	position: absolute; 
+10 	width:100%; 
+11 	height:100%; 
+12 	background-size: cover; 
+13 	background-position: 50% 62.5%; 
+14 
+ 
+15 } 
+16 
+ 
+17 .skippr > img { 
+18 	position: absolute; 
+19 	top:50%; 
+20 	left:50%; 
+21 	-webkit-transform:translate(-50%,-50%); 
+22 	-moz-transform:translate(-50%,-50%); 
+23 	-ms-transform:translate(-50%,-50%); 
+24 	transform:translate(-50%,-50%); 
+25 	width:100%; 
+26 	min-height: 100%; 
+27 } 
+28 
+ 
+29 .skippr-nav-container { 
+30 	position: absolute; 
+31 	left:50%; 
+32 	-webkit-transform:translate(-50%,0); 
+33 	transform:translate(-50%,0); 
+34 	-moz-transform:translate(-50%,0); 
+35 	-ms-transform:translate(-50%,0); 
+36 
+ 
+37 	bottom:25px; 
+38 	overflow: auto; 
+39 	z-index:999; 
+40 
+ 
+41 } 
+42 
+ 
+43 .skippr-nav-element { 
+44 	cursor:pointer; 
+45 	float:left; 
+46 	background-color: rgba(255,255,255,0.5); 
+47 	-webkit-transition: all .25s linear; 
+48 	transition: all .25s linear; 
+49 } 
+50 
+ 
+51 .skippr-nav-element-bubble { 
+52 	width:12px; 
+53 	height:12px; 
+54 	border-radius: 50%; 
+55 	margin:0 4px; 
+56 } 
+57 
+ 
+58 .skippr-nav-element-block { 
+59 	width:60px; 
+60 	height:10px; 
+61 } 
+62 
+ 
+63 
+ 
+64 
+ 
+65 .skippr-nav-element:hover, .skippr-nav-element-active { 
+66 	background-color:rgba(255,255,255,1); 
+67 } 
+68 
+ 
+69 
+ 
+70 .skippr-arrow { 
+71 	position: absolute; 
+72 	z-index:999; 
+73 	top:50%; 
+74 	-webkit-transform:translate(0%,-50%); 
+75 	-moz-transform:translate(0%,-50%); 
+76 	-ms-transform:translate(0%,-50%); 
+77 	transform:translate(0%,-50%); 
+78 
+ 
+79 	width:30px; 
+80 	height:30px; 
+81 	/*background-color: white;*/ 
+82 	transform-origin:center center; 
+83 	-webkit-transform-origin:top left; 
+84 	cursor: pointer; 
+85 } 
+86 
+ 
+87 .skippr-previous { 
+88 	left:2.5%; 
+89 	-webkit-transform:rotate(-45deg); 
+90 	transform:rotate(-45deg); 
+91 	border-top:2px solid white; 
+92 	border-left:2px solid white; 
+93 } 
+94 
+ 
+95 .skippr-next { 
+96 	right:3.5%; 
+97 	-webkit-transform:rotate(-45deg); 
+98 	transform:rotate(-45deg); 
+99 	border-bottom:2px solid white; 
+100 	border-right:2px solid white; 
+101 } 
+</style>
+ 
