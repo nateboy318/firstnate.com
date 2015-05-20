@@ -1,16 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <body>
-  <Body background="http://4.bp.blogspot.com/-I7tnDzhTVX0/UQ8hfiKKVEI/AAAAAAAAAUg/Ryq9ARhNYsk/s1600/Waves+Crashing+onto+the+Rocks+-+Zhijian+Tao.jpg">
   <title>Tech-Fair</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-</head>
+  <script src="js/owl.carousel.js"></script>
 
+  <style>
+ button {
+   width: 9em;
+   height: 3em;
+   border: solid 8px;
+   background-color:gray;
+   border-color:black;
+   text-align: center;
+ }
+   
+#owl-demo .item img{
+    display: block;
+    width: 100%;
+    height: auto;
+}
+  
+    
+ </style>
+ </head>
+  <body background="http://4.bp.blogspot.com/-I7tnDzhTVX0/UQ8hfiKKVEI/AAAAAAAAAUg/Ryq9ARhNYsk/s1600/Waves+Crashing+onto+the+Rocks+-+Zhijian+Tao.jpg">
+ 
    <nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -27,29 +46,39 @@
    </div>
    
   
-
+ <div id="owl-demo" class="owl-carousel owl-theme">
+ 
+  <div class="item"><img src="assets/fullimage1.jpg" alt="The Last of us"></div>
+  <div class="item"><img src="assets/fullimage2.jpg" alt="GTA V"></div>
+  <div class="item"><img src="assets/fullimage3.jpg" alt="Mirror Edge"></div>
+ 
+</div>
   
 </body>
+<script>$(document).ready(function() {
+ 
+  $("#owl-demo").owlCarousel({
+ 
+      navigation : true, // Show next and prev buttons
+      slideSpeed : 300,
+      paginationSpeed : 400,
+      singleItem:true
+ 
+      // "singleItem:true" is a shortcut for:
+      // items : 1, 
+      // itemsDesktop : false,
+      // itemsDesktopSmall : false,
+      // itemsTablet: false,
+      // itemsMobile : false
+ 
+  });
+ 
+});
+</script>
 <html/>
  
- <style>
- button {
-   width: 9em;
-   height: 3em;
-   border: solid 8px;
-   background-color:gray;
-   border-color:black;
-   text-align: center;
- }
-   img {
-     height:111752px;
-     Width:18299px;
-   }
-
-  
-    
- </style>
+ 
  
 
-<!DOCTYPE html>
+
 
