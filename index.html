@@ -1,171 +1,270 @@
 
 <!DOCTYPE html>
-<html lang="en">
 <head>
-  <title>Tech-Fair</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-</head>
-<body>
-
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="firstnate.com"></a>
-    </div>
-    <div>
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="http://www.firstnate.com">Home</a></li>
-        <li><a href="http://www.firstnate.com/1.html">slide-show</a></li>
+<style>
+@blue: #79B9D2;
+@accent: darken(@blue,20);
+* {
+  box-sizing:border-box;
+}
+html {
+  font-size:18px;
+}
+.topbar {
+  background:@blue;
+  color:white;
+  width:100%;
+  z-index:9999;
+  padding:5px 20px;
+  
+  h1 {
+    cursor:pointer;
+  }
+  
+  nav {
+    margin-top:25px;
+    
+    ul {
+      padding:0;
+      margin:0;
+      
+      li {
+        display:inline-block;
+        padding:10px;
         
-      </ul>
+        a {
+          color:white;
+          text-decoration:none;
+        }
+      }
+    }
+  }
+}
+  
+  ul.post-grid {
+    margin:0;
+    padding:0;
+    list-style-type:none;
+    
+    li {
+      padding:20px;
+      cursor:pointer;
+      transition: background linear 0.5s;
+      border-bottom:1px solid @accent;
+      
+      &:hover {
+      background:@accent;
+      color:white;
+      
+        h3 {
+          color: white;
+        }
+       
+      }
+    }
+  }
+.content {
+  width:100%;
+  position:relative;
+  padding:20px 40px 20px;
+}
+ h2, h3 {
+    color: @accent;
+  }
+.post {
+  -webkit-transition:0.5s linear all;
+  transition:0.5s linear all;
+  opacity:1;
+  padding-bottom:30px;
+  
+  cite {
+    display:inline-block;
+    padding:10px 0;
+  }
+}
+.comments {
+  ul {
+    margin:0;
+    padding:0;
+    li {
+      list-style-type:none;
+      padding:20px 5px;
+      border-bottom:1px @blue solid;
+    }
+  }
+}
+.post.ng-hide {
+  opacity:0;
+}
+.post.ng-hide-add, .post.ng-hide-remove {
+  display:block!important;
+}
+form {
+  width:100%;
+}
+input, textarea {
+  display:block;
+  width:100%;
+  padding:10px;
+  font-size:1.1em;
+}
+.ng-invalid.ng-dirty {
+  border-color:red;
+}
+.ng-valid.ng-dirty {
+  border-color:green;
+}
+img {
+  max-width:100%;
+}
+</style>
+<script>
+/*
+Simple blog front end demo in order to learn AngularJS - You can add new posts, add comments, and like posts.
+*/
+(function(){
+  var app = angular.module('blogApp',[]);
+  
+  app.controller('BlogController', ['$http', function($http){
+    
+    var blog = this;
+    blog.title = "AngularJS Blog App";
+    
+    blog.posts = {};
+    $http.get('https://s3-us-west-2.amazonaws.com/s.cdpn.io/110131/posts_1.json').success(function(data){
+      blog.posts = data;
+    });
+    
+    blog.tab = 'blog';
+    
+    blog.selectTab = function(setTab){
+      blog.tab = setTab;
+      console.log(blog.tab)
+    };
+    
+    blog.isSelected = function(checkTab){
+      return blog.tab === checkTab;
+    };
+    
+    blog.post = {};
+    blog.addPost = function(){
+      blog.post.createdOn = Date.now();
+      blog.post.comments = [];
+      blog.post.likes = 0;
+      blog.posts.unshift(this.post);
+      blog.tab = 0;
+      blog.post ={};
+    };   
+    
+  }]);
+  
+  app.controller('CommentController', function(){
+    this.comment = {};
+    this.addComment = function(post){
+      this.comment.createdOn = Date.now();
+      post.comments.push(this.comment);
+      this.comment ={};
+    };
+  });
+ 
+})();
+</script>
+</head>
+<body ng-app="blogApp">
+  
+  <div ng-controller="BlogController as blog">
+      <div class="topbar">
+        <div class="container">
+          <div class="row">
+            <div class="col-s-4">
+              <h1 ng-click="blog.selectTab('blog')" class="push-left">{{blog.title}}</h1>
+            </div>
+            <div class="offset-s-4 col-s-4">
+              <nav role='navigation' class="push-right">
+                <ul>
+                  <li><a href="#" ng-click="blog.selectTab('blog')">See All Posts</a></li> //
+                  <li><a href="#" ng-click="blog.selectTab('new')">Add New Post</a></li>
+                </ul>
+              </nav> 
+            </div>
+          </div>
+        </div>
+        
+        
+         
+      </div>
+     
+      
+      <div class="content">
+        <div class="container">
+          <div class="row">
+            <ul class="post-grid" ng-show="blog.isSelected('blog')">
+          <li ng-repeat="post in blog.posts" class="col-s-4" ng-class="{ 'reset-s' : $index%3==0 }" ng-click="blog.selectTab($index)" >
+            <h3>{{post.title}}</h3>
+            <p>{{post.body[0] | limitTo:70}}...</p>
+            <p class="fa fa-comment push-left"> {{post.comments.length}}
+            </p>
+            <p class="fa fa-heart push-right"> {{post.likes}}
+            </p>
+          </li>
+        </ul>
+        <div class="post" ng-repeat="post in blog.posts" ng-show="blog.isSelected($index)">
+          <div>
+            
+            <h2>{{post.title}}</h2>
+            <img src="{{post.image}}" ng-show="{{post.image}}"/>
+            <cite>by {{post.author}} on {{post.createdOn | date}}</cite>
+            <div class="post-body">
+             <p ng-repeat="paragraph in post.body">
+               {{paragraph}}
+             </p> 
+            </div>
+            
+            <div class="comments" ng-controller="CommentController as commentCtrl">
+              <button class="fa fa-heart" ng-click="post.likes = post.likes+1"> {{post.likes}}</button>
+              <h3>Comments</h3>
+              <ul>
+               <li ng-repeat="comment in post.comments">
+                 "{{comment.body}}"
+                 <cite>- <b>{{comment.author}}</b></cite>
+               </li>
+              </ul>
+              <form name="commentForm" ng-submit="commentForm.$valid && commentCtrl.addComment(post)" novalidate>
+              
+                
+                <h4>Add Comment</h4>
+                  <textarea ng-model="commentCtrl.comment.body" cols="30" rows="10" required></textarea>
+                <label for="">by:</label>
+                  <input type="text" ng-model="commentCtrl.comment.author" required placeholder="Name"/>
+                  
+                  <input type="submit" value="Submit" />
+                </form>
+            </div>
+        </div>
+      </div>
+        <div class="post" ng-show="blog.isSelected('new')">
+          <h2>Add New Post</h2>
+          
+          <form name="postForm" ng-submit=" blog.addPost()" novalidate>
+                  <h4>Title</h4>
+                  <input type="text" ng-model="blog.post.title"/>
+                  <h4>Body</h4>
+                  <textarea ng-model="blog.post.body" ng-list="/\n/" rows="10"></textarea>
+                  <label for="">Featured Image URL</label>
+                  <input type="text" ng-model="blog.post.image" placeholder="http://placekitten.com/g/2000/600" />
+                  <label for="">by:</label>
+                  <input type="text" ng-model="blog.post.author" placeholder="Author Name" required/>
+                  
+                  <input type="submit" value="Submit" />
+                </select></form>
+          
+            </div>
+            
+          </div>
+        </div>
+        
     </div>
   </div>
-</nav>
   
-<div class="container">
   
-</div>
-
-  <head>
-        <title>Your Awesome Website</title>        
-        <link rel="stylesheet" href="css/jquery.skippr.css">
-    </head>
-    <body>
-      <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-        <script src="js/jquery.skippr.js"></script>
-    </body>
-<div id="container">
-            <div id="theTarget">
-                <div style="background-image: url(img/image1.jpg)"></div>
-                <div style="background-image: url(img/image2.jpg)"></div>
-                <div style="background-image: url(img/image3.jpg)"></div>
-                <div style="background-image: url(img/image4.jpg)"></div>
-                <div style="background-image: url(img/image5.jpg)"></div>
-            </div>    
-        </div>
- <script>
-
- $(document).ready(function(){
-
-            $("#theTarget").skippr();
-
-        });    
-        
-        </script>           
-            
-<style>
-  
- 
-        // Defaults   
-        $("#theTarget").skippr({
-
-            transition: 'slide',
-            speed: 1000,
-            easing: 'easeOutQuart',
-            navType: 'block',
-            childrenElementType: 'div',
-            arrows: true,
-            autoPlay: false,
-            autoPlayDuration: 5000,
-            keyboardOnAlways: true,
-            hidePrevious: false
-
-        });
- 
-  iframe {
-    border: solid 5px red;
-    
-  }
-</style>
-            
-
-
-<!DOCTYPE html>
-<head>
-
-   <meta charset="utf-8">   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-   <meta name="viewport" content="width=device-width, initial-scale=1">
-   <meta name="description" content="">
-   <meta name="author" content="">
-
-<html lang="en">
-
-
-    <title>Tech-Fair</title>
-
-    <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom CSS -->
-    <link href="css/grayscale.css" rel="stylesheet">
-
-    <!-- Custom Fonts -->
-   <link href="font-awesome-4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
-    <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>    <![endif]-->
-
- 
- <!DOCTYPE html>
-    <!-- Intro Header -->
-    <header class="intro">
-        <div class="intro-body">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-8 col-md-offset-2">
-                  
-<p><center><font size="18em"><font color="orange">T<span>H</span>E<span> P</span><span>O</span>W<span>E</span>R<span> O</span><span>F</span> <span>K</span>I<span>N</span>D<span>N</span>E<span>S</span>S<span></font></center></p>
-                        <p class="intro-text"></p>
-                        <a href="#about" class="btn btn-circle page-scroll">
-                            <i class="fa fa-angle-double-down animated"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <!-- About Section -->
-    <section id="about" class="">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2">
-                <section id="surfing" class="">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2">
-              <center>
-
-
-<center>
-<p><center><font color="red"><font size="20px">No bully zone lego stop motion movie :By Ms. Andria's class</font></center></p>
-<iframe src="https://youtube.com/embed/SGOVExeE2NE"
-   width="560" height="315" frameborder="5" allowfullscreen></iframe>
-           
-              </center>
-              <STYLE>
-                
-               span {
-                 color:blue;
-               } 
-                
-              </STYLE>
-             <!DOCTYPE html>
-<body>
-            </div>
-        </div>
-    </section>
-
-
-
-
-
-
-</html>
+</body>
