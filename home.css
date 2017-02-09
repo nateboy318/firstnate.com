@@ -1,0 +1,171 @@
+@import url(https://fonts.googleapis.com/css?family=Raleway:700);
+
+html, body {
+  height:100%;
+  padding:0;
+  margin:0;
+  font-family: Raleway,sans-serif;
+}
+h1 {
+  margin:0;
+  display: table-cell;
+  vertical-align: middle;
+  text-align:center;
+  letter-spacing: -4px;
+  font-size:100px;
+  font-weight:700;
+  text-transform:uppercase;
+  text-shadow:1px 1px 1px rgba(0,0,0,0.5);
+  color: #171717;
+}
+h1::before, h1::after {
+    width: 220px;
+    height: 1px;
+    border-top:4px double #FFF;
+    content:"";
+    display:block;
+    margin:20px auto;
+}
+header {
+  height: calc(100% - 65px);
+  background:#333;
+  
+  -webkit-perspective: 1500px;
+  perspective: 1500px;
+  perspective-origin: center bottom;
+}
+.hero {
+  position:relative;
+  background:#333 url(http://images1.laweekly.com/imager/u/original/5916492/photo_by_buddy_bleckley.jpg) no-repeat center center;
+  background-size:cover;
+  height: 100%;
+  width:100%;
+  
+  -webkit-transform-origin: 50% 100%;
+  transform-origin: 50% 100%;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  
+  display:table;
+}
+.hero .overlay {
+  content:"";
+  display:block;
+  position:absolute;
+  top:0;
+  bottom:0;
+  left:0;
+  right:0;
+  opacity:0;
+  background: linear-gradient(to bottom, rgba(0,0,0,1) 0%,rgba(0,0,0,0) 100%);
+  color: #171717;
+}
+
+nav {
+  background:#171717;
+  height:65px;
+}
+nav.fixed {
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+}
+.sticky-wrapper {
+  height:65px;
+}
+nav ul {
+  list-style:none;
+  padding:0;
+  margin:0;
+  text-align:center;
+}
+nav ul li {
+  display:inline-block;
+}
+nav ul a {
+  height:65px;
+  line-height:65px;
+  padding:10px 15px;
+  color:white;
+  
+  
+  font-size: 14px;
+  letter-spacing: 2px;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-decoration:none;
+}
+
+.picture-container {
+-webkit-box-shadow: 20px 20px 20px 0px rgba(0,0,0,0.80);
+-moz-box-shadow: 20px 20px 20px 0px rgba(0,0,0,0.80);
+box-shadow: 20px 20px 20px 0px rgba(0,0,0,0.80);
+margin: 40px;
+height: auto;
+width: auto;
+background-color:#171717;
+border-radius:2%;
+display: inline-block;
+color: white;
+}
+
+.merch {
+display: inline-block;
+margin: 25px;
+height: 250px;
+width: 200px; 
+border-radius:4%;
+}
+
+#bg{
+   background-image:url(http://dreamicus.com/data/wall/wall-03.jpg);
+   /*background-color: #171717;*/
+   background-repeat: no-repeat;
+   background-size: cover;
+   height: auto;
+   width: auto;
+
+}
+
+
+
+
+
+h2 {
+  text-align: center;
+}
+
+.ventana{
+  width:625px;
+  height:450px;
+  box-shadow: 5px 5px 10px 0px rgba(0,0,0,0.83);
+ background-color: #171717;
+  position:absolute;
+  top:20%;
+  margin-left: 350px;
+  text-align:center;
+  padding:10px;
+  border-radius:5px;
+  font-size:1.6em;
+  color: white;
+}
+.ventana button{
+   background-color: #171717;
+  position:absolute;
+  top:10px;
+  right:17px;
+  padding: 0 5px;
+  font-size:3em;
+  font-weight:bold;
+  border:none;
+  cursor:pointer;
+  color: white;
+}
+
+#pop-img{
+  height:275px;
+  width:220px;
+  border-radius: 2%;
+}
+

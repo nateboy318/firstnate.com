@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="home.css" type="text/css" />
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    </head>
+    <body>
+        
+      <div class="sticky-wrapper">
+<nav>
+  <ul>
+    <li><a href="home.html">Home</a></li>
+    <li><a href="apparel.html">apparel</a></li>
+    <li><a href="stickers.html">stickers</a></li>
+    <li><a href="contact.html">contact us</a></li>
+
+  </ul>
+</nav>
+</div>  
+        
+        <header id="home">
+  <div class="hero">
+    <div class="overlay"></div>
+    <h1>A PLUS SKATE</h1>
+  </div>
+</header>
+
+<script>
+
+        
+$('body').append('<div class="ventana"><div class="top">WEEKLY DISCOUNT IS...</div><button>X</button><h2>10% off</h2><br><img id="pop-img" src="http://www.activerideshop.com/media/catalog/product/cache/1/small_image/330x/9df78eab33525d08d6e5fb8d27136e95/a/c/activeswoophoodedsweatshirtgarnet1.jpg"></div>');
+$('.ventana button').click(function(){
+$('.ventana').fadeOut('slow',function(){
+  this.remove();
+});
+});
+
+</script>
+    </body>
+</html>
